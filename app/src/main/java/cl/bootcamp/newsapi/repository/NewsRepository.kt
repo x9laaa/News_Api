@@ -8,17 +8,16 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class NewsRepository @Inject constructor(private val apiNews: ApiNews) {
-    suspend fun getNews(frase: String): Response<NewsModal> {
-        return apiNews.getNews(frase, API_KEY)
+    suspend fun getNews(query: String): Response<NewsModal> {
+        return apiNews.getNews(query)
     }
 
-    suspend fun getNewsById(id: String): Article? {
-        val response = apiNews.getNews(id)
+    suspend fun getNewsById(name: String, query: String): Article? {
+        val response = apiNews.getNews(query)
         if (response.isSuccessful) {
-            return response.body()?.articles?.find { it.source.id == id }
+            return response.body()?.articles?.find { it.source.name == name }
         }
         return null
     }
-
 
 }

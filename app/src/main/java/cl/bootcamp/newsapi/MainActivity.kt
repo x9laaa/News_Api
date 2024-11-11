@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         val viewModel: NewsViewModel by viewModels()
         setContent {
             NewsApiTheme {
-                HomeView(viewModel)
+                //HomeView(viewModel)
             }
         }
     }
