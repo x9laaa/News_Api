@@ -12,10 +12,10 @@ class NewsRepository @Inject constructor(private val apiNews: ApiNews) {
         return apiNews.getNews(query)
     }
 
-    suspend fun getNewsById(name: String, query: String): Article? {
+    suspend fun getNewsById(title: String, query: String): Article? {
         val response = apiNews.getNews(query)
         if (response.isSuccessful) {
-            return response.body()?.articles?.find { it.source.name == name }
+            return response.body()?.articles?.find { it.title == title }
         }
         return null
     }

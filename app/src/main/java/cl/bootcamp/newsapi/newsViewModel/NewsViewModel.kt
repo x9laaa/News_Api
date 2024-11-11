@@ -7,6 +7,7 @@ import cl.bootcamp.newsapi.modal.Article
 import cl.bootcamp.newsapi.repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,6 +33,15 @@ class NewsViewModel @Inject constructor(private val repository: NewsRepository) 
                 Log.e("NewsViewModel", "Error: ${response.errorBody()}")
             }
         }
+    }
+
+    fun getArticleByTitle(title: String): StateFlow<Article?> {
+        val result = MutableStateFlow<Article?>(null)
+        viewModelScope.launch {
+            val article = _news.value.find { it.title == title }
+            result.value = article
+        }
+        return result
     }
 
 }
