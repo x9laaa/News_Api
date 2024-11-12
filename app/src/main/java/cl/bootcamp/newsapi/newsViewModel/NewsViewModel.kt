@@ -18,7 +18,7 @@ class NewsViewModel @Inject constructor(private val repository: NewsRepository) 
     private val _news = MutableStateFlow<List<Article>>(emptyList())
     val news = _news.asStateFlow()
 
-    private var query = "chile"
+    private var query = "dog"
 
     init {
         fetchAllNews(query)

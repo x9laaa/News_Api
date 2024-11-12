@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import cl.bootcamp.newsapi.newsViewModel.NewsViewModel
+import cl.bootcamp.newsapi.view.DetailView
 import cl.bootcamp.newsapi.view.HomeView
 
 
